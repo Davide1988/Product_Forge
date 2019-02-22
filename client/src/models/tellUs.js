@@ -23,7 +23,6 @@ TellUs.prototype.makeSelectorsCancerAndMedication = function (div) {
   this.populateCancerSelector()
   this.selectorCancer.addEventListener('change', (evt) =>{
   const cancerSelected = evt.target.value
-  console.log(cancerSelected);
 });
 }
 
@@ -35,6 +34,8 @@ TellUs.prototype.populateCancerSelector = function () {
     this.selectorCancer.appendChild(cancerOption)
   })
 };
+
+
 
 
 

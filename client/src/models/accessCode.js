@@ -1,5 +1,4 @@
-
-const json = require('./cancerObj');
+const json = require('../../../server/assets/cancerObj');
 
 const AccessCode = function () {
     this.json = json
@@ -7,6 +6,7 @@ const AccessCode = function () {
 
 AccessCode.prototype.quickAccess = function (code) {
     parsed = code.split('_');
+
 
     if (parsed.length != 2) {
         // Incorrect access code format
@@ -20,7 +20,9 @@ AccessCode.prototype.quickAccess = function (code) {
             return item.id === parsed[0]
         })[0];
 
+
         let treatment = cancerFilter.treatments[parsed[1]];
+
 
         return ({
             success: true,
@@ -31,4 +33,3 @@ AccessCode.prototype.quickAccess = function (code) {
 };
 
 module.exports = AccessCode;
-

@@ -94,7 +94,7 @@
 {"name":"Laryngeal Cancer (Head and Neck Cancer)","id":"","description":""},
 {"name":"Leukemia","id":"","description":""},
 {"name":"Lip and Oral Cavity Cancer (Head and Neck Cancer)","id":"","description":""},
-{"name":"Liver Cancer","id":"","description":""},
+{"name":"Liver Cancer","id":"liv","description":""},
 {
   "name":"Lung Cancer",
   "id":"lung",
