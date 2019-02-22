@@ -20,6 +20,16 @@ padding-left: 10px;
 }
 
 .nav ul li:hover{
-background:gold;
+background:white;
 color:  black;
+}
+
+#helps-links{
+  color: red;
+  text-align: justify;
+  align-content: center;
+}
+
+a{
+  margin-left: 20px;
 }

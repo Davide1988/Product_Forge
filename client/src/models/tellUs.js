@@ -1,4 +1,4 @@
-
+const data = require('../../../server/assets/cancerlist.json')
 
 const TellUs = function(container,button){
   this.container = container
@@ -8,26 +8,36 @@ const TellUs = function(container,button){
 TellUs.prototype.bindEvents = function () {
   this.button.addEventListener('click' , (evt) =>{
     this.container.innerHTML = " "
-    this.makeSelectorCancer();
-    this.makeSelectorMedication();
+    selectorDiv = document.createElement('div')
+    this.container.appendChild(selectorDiv)
+    this.makeSelectorsCancerAndMedication(selectorDiv);
+  })
+}
+
+
+TellUs.prototype.makeSelectorsCancerAndMedication = function (div) {
+  this.selectorCancer = document.createElement('select')
+  div.appendChild(this.selectorCancer)
+  selectorMedication = document.createElement('select')
+  div.appendChild(selectorMedication)
+  this.populateCancerSelector()
+  this.selectorCancer.addEventListener('change', (evt) =>{
+  const cancerSelected = evt.target.value
+  console.log(cancerSelected);
+});
+}
+
+
+TellUs.prototype.populateCancerSelector = function () {
+  data.forEach((cancer) =>{
+    const cancerOption = document.createElement('option')
+    cancerOption.textContent = cancer
+    this.selectorCancer.appendChild(cancerOption)
   })
 };
 
 
-TellUs.prototype.makeSelectorCancer = function () {
 
-  selectorCancer = document.createElement('select')
-  this.container.appendChild(selectorCancer)
-
-};
-
-
-TellUs.prototype.makeSelectorMedication = function () {
-
-  selectorMedication = document.createElement('select')
-  this.container.appendChild(selectorMedication)
-
-};
 
 
 module.exports = TellUs;
