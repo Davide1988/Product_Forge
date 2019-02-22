@@ -8,10 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log("javaloaded");
 
 
-
-  const container = document.querySelector('#container')
-  const tellUsButton = document.querySelector('#tellUsButton')
-  const tellUs = new TellUs(container,tellUsButton)
+  const container = document.querySelector('#container');
+  const tellUsButton = document.querySelector('#tellUsButton');
+  const tellUs = new TellUs(container, tellUsButton);
   tellUs.bindEvents();
 
 
