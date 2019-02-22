@@ -1,0 +1,25 @@
+
+.header {
+background: gray;
+padding-top:.5em;
+border-top: solid 2px black;
+border-bottom: solid 2px black;
+height: 50px;
+width: 100%;
+}
+
+
+.nav ul li {
+display:inline-block;
+float: left;
+text-decoration:none;
+color: black;
+display: block;
+font-weight: bold;
+padding-left: 10px;
+}
+
+.nav ul li:hover{
+background:gold;
+color:  black;
+}
