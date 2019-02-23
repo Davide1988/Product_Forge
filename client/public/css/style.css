@@ -1,13 +1,18 @@
 
 body{
-  font-family: 'Montserrat', sans-serif;
-  background-color: #D6EFFF;
+font-family: 'Lato', sans-serif;
+  background-color:white;
 }
 
 
 .first-page{
   text-align: center;
   margin-top: 100px;
+}
+
+.pic{
+  height: 150px;
+  width: 100%;
 }
 
 

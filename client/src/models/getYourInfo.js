@@ -1,5 +1,6 @@
 AccessCode = require('./accessCode.js')
 RequestHelper = require('../helpers/request_helper.js')
+TellUs = require('./tellUs.js')
 
 
 
@@ -40,7 +41,8 @@ GetYourInfo.prototype.linkForNoCode = function () {
   this.container.appendChild(link)
   link.addEventListener('click', (evt) => {
     this.container.innerHTML = " "
-    const 
+    const selectors = new TellUs(this.container)
+    selectors.makeSelectorsCancerAndMedication()
   })
 };
 
