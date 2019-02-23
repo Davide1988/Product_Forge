@@ -48,7 +48,6 @@ GetYourInfo.prototype.searchData = function (code) {
 
 GetYourInfo.prototype.displayData = function (data) {
 
-  console.log(data);
   const resultDiv = document.createElement('div')
   resultDiv.id = "cancer-result"
   this.container.appendChild(resultDiv)
@@ -73,12 +72,6 @@ GetYourInfo.prototype.displayData = function (data) {
 
   resultDiv.appendChild(treatmentLable)
   resultDiv.appendChild(treatment)
-
-
-
-
-
-
 
 
 };

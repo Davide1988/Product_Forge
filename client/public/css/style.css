@@ -53,3 +53,19 @@ a{
 #cancer-result{
   text-align: center;
 }
+
+
+#commentbox{
+  height: 150px;
+  width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#button-submission{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}

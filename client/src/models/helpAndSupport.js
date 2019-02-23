@@ -41,7 +41,45 @@ HelpAndSupport.prototype.bindEvents = function () {
     divForLinksHelp.appendChild(list)
 
 
+    this.makeCommentBox()
+
+
   })
+};
+
+
+HelpAndSupport.prototype.makeCommentBox = function () {
+
+  const commentBoxDiv = document.createElement('div')
+  this.container.appendChild(commentBoxDiv)
+  commentBoxDiv.id = "commentboxDiv"
+
+
+
+  const commentbox = document.createElement('input')
+  commentbox.id = "commentbox"
+  commentbox.placeholder = "Leave us a comment here"
+
+  const buttonSubmission = document.createElement('button')
+  buttonSubmission.id = "button-submission"
+  buttonSubmission.textContent = "Submit"
+
+  commentBoxDiv.appendChild(commentbox)
+  commentBoxDiv.appendChild(buttonSubmission)
+
+
+  buttonSubmission.addEventListener('click', (evt) => {
+    commentbox.value.reset = "thank you for your feedback"
+    const commentLeft = commentbox.value
+    this.saveToDB(commentLeft)
+  })
+};
+
+
+HelpAndSupport.prototype.saveToDB = function (comment) {
+
+  //TODO save the comment to DB
+
 };
 
 
