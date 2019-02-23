@@ -2,7 +2,7 @@
 // const UserForm = require('./models/userForm.js')
 const GetYourInfo = require('./models/getYourInfo.js')
 const HelpAndSupport = require('./models/helpAndSupport.js')
-
+const LeafletMap = require('./models/leafletMap')
 
 
 
@@ -33,6 +33,10 @@ console.log("javaloaded");
   const getYourInfoButton = document.querySelector('#getInfo')
   const getYourInfo = new GetYourInfo(container, getYourInfoButton)
   getYourInfo.bindEvents();
+
+  const getMapButton = document.querySelector('#map')
+  const leafletMap = new LeafletMap(container, getMapButton);
+  leafletMap.bindEvents();
 
 
 

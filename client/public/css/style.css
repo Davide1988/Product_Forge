@@ -1,16 +1,18 @@
-
 body{
   font-family: 'Montserrat', sans-serif;
   background-color: #D6EFFF;
 }
 
+#mapid {
+  align-items: center;
+  height: 350px;
+  width: 75%
+}
 
 .first-page{
   text-align: center;
   margin-top: 100px;
 }
-
-
 
 .header {
 background: #0050AA;

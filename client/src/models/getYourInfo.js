@@ -39,8 +39,8 @@ GetYourInfo.prototype.linkForNoCode = function () {
   link.textContent = "I don't have a code"
   this.container.appendChild(link)
   link.addEventListener('click', (evt) => {
-    this.container.innerHTML = " "
-    const 
+    /*this.container.innerHTML = " "
+    const */
   })
 };
 
