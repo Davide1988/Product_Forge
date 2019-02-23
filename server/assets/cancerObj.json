@@ -110,7 +110,8 @@
     },
     {
       "type": "Typical",
-      "name": "Chemotherapy"
+      "name": "Chemotherapy",
+      "drug" : "CISPLATIN"
     },
     {
       "type": "Typical",

@@ -1,5 +1,5 @@
-const TellUs = require('./models/tellUs.js')
-const UserForm = require('./models/userForm.js')
+// const TellUs = require('./models/tellUs.js')
+// const UserForm = require('./models/userForm.js')
 const GetYourInfo = require('./models/getYourInfo.js')
 const HelpAndSupport = require('./models/helpAndSupport.js')
 
@@ -15,14 +15,14 @@ console.log("javaloaded");
 
 
 
-  const tellUsButton = document.querySelector('#tellUsButton');
-  const tellUs = new TellUs(container, tellUsButton);
-  tellUs.bindEvents();
+  // const tellUsButton = document.querySelector('#tellUsButton');
+  // const tellUs = new TellUs(container, tellUsButton);
+  // tellUs.bindEvents();
 
 
-  const userFormButton = document.querySelector('#userFormButton')
-  const userForm = new UserForm(container, userFormButton)
-  userForm.bindEvents();
+  // const userFormButton = document.querySelector('#userFormButton')
+  // const userForm = new UserForm(container, userFormButton)
+  // userForm.bindEvents();
 
 
   const helpAndSupportButton = document.querySelector('#helpAndSupport')

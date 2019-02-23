@@ -1,5 +1,6 @@
 AccessCode = require('./accessCode.js')
-const PubSub = require('../helpers/pub_sub.js')
+RequestHelper = require('../helpers/request_helper.js')
+
 
 
 const GetYourInfo = function(container, button){
@@ -14,6 +15,7 @@ GetYourInfo.prototype.bindEvents = function () {
   inputDiv = document.createElement('div')
   this.container.appendChild(inputDiv)
   this.createInput(inputDiv);
+  this.linkForNoCode();
   })
 };
 
@@ -32,6 +34,18 @@ GetYourInfo.prototype.createInput= function (div) {
 
 };
 
+GetYourInfo.prototype.linkForNoCode = function () {
+  const link = document.createElement('button')
+  link.textContent = "I don't have a code"
+  this.container.appendChild(link)
+  link.addEventListener('click', (evt) => {
+    this.container.innerHTML = " "
+    const 
+  })
+};
+
+
+
 GetYourInfo.prototype.getCode = function (button,input) {
   button.addEventListener('click', (evt) =>{
     const code = input.value;
@@ -40,11 +54,17 @@ GetYourInfo.prototype.getCode = function (button,input) {
 };
 
 
+
+
 GetYourInfo.prototype.searchData = function (code) {
   const searchTool = new AccessCode
   const data = searchTool.quickAccess(code)
   this.displayData(data)
+
+  this.searchStudiesForCancer(data.cancer.name)
 };
+
+
 
 GetYourInfo.prototype.displayData = function (data) {
 
@@ -74,7 +94,57 @@ GetYourInfo.prototype.displayData = function (data) {
   resultDiv.appendChild(treatment)
 
 
+  this.divForDrugStudies = document.createElement('div')
+  this.container.appendChild(this.divForDrugStudies)
+
+
+  const drugLable = document.createElement('label')
+  drugLable.textContent = "Pharmaceutical : "
+  const drug = document.createElement('p')
+  drug.textContent = data.treatment.drug
+
+  this.divForDrugStudies.appendChild(drugLable)
+  this.divForDrugStudies.appendChild(drug)
+
+  this.searchStudiesForTreatment(data.treatment.drug)
+
+
 };
 
+
+
+GetYourInfo.prototype.searchStudiesForTreatment = function (treatmentName) {
+  const url = `https://api.fda.gov/drug/event.json?search=patient.drug.openfda.generic_name:"${treatmentName}"`
+  const request = new RequestHelper(url);
+  request.get()
+      .then((data) =>{
+        console.log(data);
+        this.renderDrugInfo(data)
+      })
+};
+
+
+
+
+GetYourInfo.prototype.searchStudiesForCancer = function (cancerName) {
+  console.log(cancerName);
+};
+
+
+
+
+GetYourInfo.prototype.renderDrugInfo = function (data) {
+  const sideEffectLabel = document.createElement('label')
+  sideEffectLabel.textContent = "Side effect : "
+  const listOfSideEffect = document.createElement('ul')
+  data.results[0].patient.reaction.forEach((x) =>{
+    const reactionList = document.createElement('li')
+    reactionList.textContent = x.reactionmeddrapt
+    listOfSideEffect.appendChild(reactionList)
+  })
+
+  this.divForDrugStudies.appendChild(sideEffectLabel)
+  this.divForDrugStudies.appendChild(listOfSideEffect)
+};
 
 module.exports = GetYourInfo;

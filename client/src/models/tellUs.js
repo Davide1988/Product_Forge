@@ -1,18 +1,18 @@
 const data = require('../../../server/assets/cancerlist.json')
 
-const TellUs = function(container,button){
+const TellUs = function(container){
   this.container = container
   this.button = button
 }
 
-TellUs.prototype.bindEvents = function () {
-  this.button.addEventListener('click' , (evt) =>{
-    this.container.innerHTML = " "
-    selectorDiv = document.createElement('div')
-    this.container.appendChild(selectorDiv)
-    this.makeSelectorsCancerAndMedication(selectorDiv);
-  })
-}
+// TellUs.prototype.bindEvents = function () {
+//   this.button.addEventListener('click' , (evt) =>{
+//     this.container.innerHTML = " "
+//     selectorDiv = document.createElement('div')
+//     this.container.appendChild(selectorDiv)
+//     this.makeSelectorsCancerAndMedication(selectorDiv);
+//   })
+// }
 
 
 TellUs.prototype.makeSelectorsCancerAndMedication = function (div) {
