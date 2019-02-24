@@ -1,10 +1,14 @@
-
 body{
 font-family: 'Lato', sans-serif;
   background-color:white;
   padding-bottom: 40px;
 }
 
+#mapid {
+  align-items: center;
+  height: 350px;
+  width: 75%
+}
 
 .first-page{
   text-align: center;
