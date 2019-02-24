@@ -14,6 +14,7 @@ GetYourInfo.prototype.bindEvents = function () {
   this.button.addEventListener("click", (evt) => {
   this.container.innerHTML = " "
   inputDiv = document.createElement('div')
+  inputDiv.id = "ref-code-input"
   this.container.appendChild(inputDiv)
   this.createInput(inputDiv);
   this.linkForNoCode();
@@ -37,6 +38,7 @@ GetYourInfo.prototype.createInput= function (div) {
 
 GetYourInfo.prototype.linkForNoCode = function () {
   const link = document.createElement('button')
+  link.id = "button-no-code"
   link.textContent = "I don't have a code"
   this.container.appendChild(link)
   link.addEventListener('click', (evt) => {
