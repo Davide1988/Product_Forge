@@ -1,6 +1,6 @@
 body{
-  font-family: 'Montserrat', sans-serif;
-  background-color: #D6EFFF;
+font-family: 'Lato', sans-serif;
+  background-color:white;
 }
 
 #mapid {
@@ -13,6 +13,13 @@ body{
   text-align: center;
   margin-top: 100px;
 }
+
+.pic{
+  height: 150px;
+  width: 100%;
+}
+
+
 
 .header {
 background: #0050AA;
