@@ -59,7 +59,7 @@ text-decoration:none;
 color: white;
 display: block;
 font-weight: bold;
-padding-left: 10px;
+padding-left: 15px;
 }
 
 .nav ul li:hover{
@@ -81,7 +81,7 @@ a{
 
 
 #cancer-result{
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -113,4 +113,5 @@ a{
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
 }

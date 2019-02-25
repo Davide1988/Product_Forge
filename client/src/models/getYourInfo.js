@@ -1,6 +1,8 @@
 AccessCode = require('./accessCode.js')
 RequestHelper = require('../helpers/request_helper.js')
 TellUs = require('./tellUs.js')
+const Highcharts = require('highcharts');
+const timeLineData = require('../../../server/assets/timeline');
 
 
 
@@ -54,6 +56,12 @@ GetYourInfo.prototype.getCode = function (button,input) {
   button.addEventListener('click', (evt) =>{
     const code = input.value;
     this.searchData(code)
+    const chartdiv = document.createElement('div');
+    chartdiv.id = "chart";
+    chartdiv.style = "width:100%; height:400px;"
+
+    this.container.appendChild(chartdiv);
+    setUpChart();
   })
 };
 
@@ -83,7 +91,7 @@ GetYourInfo.prototype.displayData = function (data) {
 
   const descriptionLable = document.createElement('label')
   descriptionLable.textContent = "Description : "
-  const description = document.createElement('p')
+  const description = document.createElement('h4')
   description.textContent = data.cancer.description
 
   resultDiv.appendChild(descriptionLable)
@@ -91,7 +99,7 @@ GetYourInfo.prototype.displayData = function (data) {
 
   const treatmentLable = document.createElement('label')
   treatmentLable.textContent = "Treatment : "
-  const treatment = document.createElement('p')
+  const treatment = document.createElement('h4')
   treatment.textContent = data.treatment.name
 
   resultDiv.appendChild(treatmentLable)
@@ -150,5 +158,99 @@ GetYourInfo.prototype.renderDrugInfo = function (data) {
   this.divForDrugStudies.appendChild(sideEffectLabel)
   this.divForDrugStudies.appendChild(listOfSideEffect)
 };
+
+
+
+
+function processTimeLine(){
+    let lastYear;
+    let yearData = [];
+    let papersCount = [];
+    timeLineData.forEach((item) => {
+        function pushTheData() {
+            yearData.push(item.year*1);
+            papersCount.push(item.count*1);
+            lastYear = item.year;
+        }
+        if (yearData.length === 0){
+            pushTheData();
+        } else {
+            let gap = lastYear - item.year;
+
+            if (gap === 1){
+                pushTheData()
+            } else {
+                for(let i = 1; i < gap; i++) {
+                    lastYear = lastYear - 1;
+                    yearData.push(lastYear);
+                    papersCount.push(0);
+                }
+                pushTheData()
+            }
+        }
+    });
+
+    return [yearData.reverse(), papersCount.reverse()];
+}
+
+
+function setUpChart(){
+
+    let [years, papers] = processTimeLine();
+
+    console.log(years);
+    console.log(papers);
+
+    var myChart = Highcharts.chart('chart', {
+        title: {
+            text: 'Number of Research papers per year on CISPLATIN in Lung Cancer'
+        },
+
+        subtitle: {
+            text: 'Source: pubmed.gov'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Number of published papers'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: years[0]
+            }
+        },
+
+        series: [{
+            name: 'Research Papers',
+            data: papers
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+}
+
 
 module.exports = GetYourInfo;

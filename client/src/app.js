@@ -34,9 +34,9 @@ console.log("javaloaded");
   const getYourInfo = new GetYourInfo(container, getYourInfoButton)
   getYourInfo.bindEvents();
 
-  const getMapButton = document.querySelector('#map')
-  const leafletMap = new LeafletMap(container, getMapButton);
-  leafletMap.bindEvents();
+  // const getMapButton = document.querySelector('#map')
+  // const leafletMap = new LeafletMap(container, getMapButton);
+  // leafletMap.bindEvents();
 
 
 
